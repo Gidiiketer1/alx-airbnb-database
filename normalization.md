@@ -1,0 +1,2 @@
+## Normalization
+Database normalization is the process of organizing the fields and tables of a relational database to minimize redundancy and dependency. The main goals of normalization are to eliminate redundant data, ensure data dependencies make sense, and simplify the structure of the database. Normalization typically involves dividing large tables into smaller, more manageable tables and defining relationships between them. The most common normal forms are First Normal Form (1NF), Second Normal Form (2NF), and Third Normal Form (3NF).
