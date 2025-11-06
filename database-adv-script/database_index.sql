@@ -11,9 +11,13 @@ CREATE INDEX idx_bookings_start_date ON bookings(start_date);
 CREATE INDEX idx_properties_id ON properties(id);
 CREATE INDEX idx_properties_name ON properties(name);
 
--- 4️⃣ Test performance before and after indexing
--- Before adding indexes
-EXPLAIN SELECT * FROM bookings WHERE user_id = 5;
+-- 4️⃣ Measure query performance before and after adding indexes
 
--- After adding indexes
-EXPLAIN SELECT * FROM bookings WHERE user_id = 5;
+-- Before creating indexes (simulate by dropping indexes first if needed)
+-- DROP INDEX idx_bookings_user_id ON bookings;
+
+-- Measure performance without index
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 5;
+
+-- Measure performance with index applied
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 5;
