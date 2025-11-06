@@ -133,3 +133,38 @@ WHERE (
 ) > 3;
 ```
 
+---
+
+# Aggregations and Window Functions
+
+## 🎯 Objective
+This task demonstrates how to use **aggregate functions** and **window functions** to analyze data.
+
+### 1️⃣ Aggregation — COUNT and GROUP BY
+Find the total number of bookings made by each user.
+
+```sql
+SELECT 
+    u.id AS user_id,
+    u.first_name,
+    u.last_name,
+    COUNT(b.id) AS total_bookings
+FROM users u
+LEFT JOIN bookings b
+ON u.id = b.user_id
+GROUP BY u.id, u.first_name, u.last_name
+ORDER BY total_bookings DESC;
+
+SELECT 
+    p.id AS property_id,
+    p.name AS property_name,
+    COUNT(b.id) AS total_bookings,
+    RANK() OVER (ORDER BY COUNT(b.id) DESC) AS property_rank
+FROM properties p
+LEFT JOIN bookings b
+ON p.id = b.property_id
+GROUP BY p.id, p.name
+ORDER BY property_rank;
+```
+
+
