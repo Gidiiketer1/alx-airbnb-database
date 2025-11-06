@@ -26,3 +26,21 @@ CREATE INDEX idx_bookings_start_date ON bookings(start_date);
 
 CREATE INDEX idx_properties_id ON properties(id);
 CREATE INDEX idx_properties_name ON properties(name);
+```
+📊 3️⃣ Measuring Performance
+Before Indexing:
+```sql
+EXPLAIN SELECT * FROM bookings WHERE user_id = 5;
+
+```
+Query scanned all rows (Full Table Scan).
+
+Slow performance when data volume is large.
+
+After Indexing:
+```sql
+EXPLAIN SELECT * FROM bookings WHERE user_id = 5;
+```
+Query now uses index lookup.
+
+Execution time significantly reduced.
